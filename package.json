@@ -1,0 +1,20 @@
+{
+    "name": "oop-example-app",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "build": "tsc -b",
+        "start": "tsc -w & node --watch dist/src/index.js",
+        "start:prod": "node dist/src/index.js",
+        "pretty": "prettier --write ."
+    },
+    "author": "Danil Rodionow",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "@types/node": "^22.13.9",
+        "prettier": "3.5.3",
+        "typescript": "^5.8.2"
+    }
+}
