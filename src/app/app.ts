@@ -1,4 +1,5 @@
-import { IRouter, Routes } from "./routes/models.js";
+import { RouterUtils } from "../shared/ui/index.js";
+import type { IRouter } from "./routes/models.js";
 
 class App {
   constructor(
@@ -7,15 +8,11 @@ class App {
   ) {}
 
   start(): void {
-    const a = document.createElement("a");
-    a.setAttribute("href", "/game");
-    a.textContent = "Game";
-    const a2 = document.createElement("a");
-    a2.setAttribute("href", "/");
-    a2.textContent = "Home";
+    const gameLink = RouterUtils.createLink("/game", "Game");
+    const homeLink = RouterUtils.createLink("/", "Home");
 
     const header = document.createElement("header");
-    header.append(a, a2);
+    header.append(gameLink, homeLink);
     const main = document.createElement("main");
 
     this.entrypoint.append(header, main);

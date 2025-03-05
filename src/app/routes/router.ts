@@ -8,15 +8,17 @@ export class Router implements IRouter {
   private root: HTMLElement = document.body;
 
   constructor() {
-    window.addEventListener("load", () => {
-      this.navigate(window.location.pathname);
-    });
+    window.addEventListener(
+      "load",
+      this.navigate.bind(this, window.location.pathname),
+      { once: true },
+    );
     document.addEventListener("click", (e) => {
       const link = e.target as HTMLLinkElement;
 
-      if (link.hasAttribute("href")) {
+      if (link.hasAttribute("routeLink")) {
         e.preventDefault();
-        this.navigate(link.getAttribute("href")!);
+        this.navigate(link.getAttribute("routeLink")!);
         return;
       }
     });
