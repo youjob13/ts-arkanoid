@@ -8,6 +8,7 @@ export class Router implements IRouter {
   private root: HTMLElement = document.body;
 
   constructor() {
+    // ToDo: refactor
     window.addEventListener(
       "load",
       this.navigate.bind(this, window.location.pathname),
