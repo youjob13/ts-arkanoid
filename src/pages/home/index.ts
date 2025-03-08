@@ -1,1 +1,1 @@
-export { HomeComponent } from "./ui/home.component.js";
+export { HomeComponent } from "./ui/Home.component.js";

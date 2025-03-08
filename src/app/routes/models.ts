@@ -3,7 +3,7 @@ import { Renderable } from "../../shared/model/index.js";
 export type Route = {
   path: string;
   title?: string;
-  component?: () => Promise<new () => Renderable>;
+  component?: () => Promise<new (...args: any[]) => Renderable>;
   redirectTo?: string;
 };
 

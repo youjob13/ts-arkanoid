@@ -1,9 +1,15 @@
-import { Renderable } from "../../../shared/model/index.js";
+import { BaseComponent } from "../../../shared/ui/index.js";
 
-export class HomeComponent implements Renderable {
+export class HomeComponent extends BaseComponent {
+  constructor() {
+    super("home-page");
+  }
+
   render() {
-    const div = document.createElement("div");
-    div.textContent = "Home Page";
-    return div;
+    return this.createComponent(`
+      <p slot="person-name">
+        Home Page
+      </p>
+      `);
   }
 }
