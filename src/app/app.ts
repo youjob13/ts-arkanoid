@@ -1,23 +1,27 @@
 import { RouterUtils } from "../shared/ui/index.js";
 import type { IRouter } from "./routes/models.js";
+import { container } from "tsyringe";
+import { Router } from "./routes/router.js";
+import { ROUTES } from "./routes/routes.js";
 
 class App {
-  constructor(
-    private entrypoint: HTMLElement,
-    private router: IRouter,
-  ) {}
+    router = container.resolve(Router);
 
-  start(): void {
-    const gameLink = RouterUtils.createLink("/game", "Game");
-    const homeLink = RouterUtils.createLink("/", "Home");
+    constructor(private entrypoint: HTMLElement) {
+        this.router.provideRoutes(ROUTES);
+    }
 
-    const header = document.createElement("header");
-    header.append(gameLink, homeLink);
-    const main = document.createElement("main");
+    start(): void {
+        const gameLink = RouterUtils.createLink("/game", "Game");
+        const homeLink = RouterUtils.createLink("/", "Home");
 
-    this.entrypoint.append(header, main);
-    this.router.registerRoot(main);
-  }
+        const header = document.createElement("header");
+        header.append(gameLink, homeLink);
+        const main = document.createElement("main");
+
+        this.entrypoint.append(header, main);
+        this.router.registerRoot(main);
+    }
 }
 
 export default App;

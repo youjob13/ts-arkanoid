@@ -2,7 +2,9 @@ import { Renderable } from "../../shared/model/index.js";
 import { arrayToMap } from "../../shared/utils/utils.js";
 import { ANY_PATH } from "./constants.js";
 import type { Routes, Route, IRouter } from "./models.js";
+import { injectable } from "tsyringe";
 
+@injectable()
 export class Router implements IRouter {
   private routes: Map<Route["path"], Route> = new Map();
   private root: HTMLElement = document.body;

@@ -8,6 +8,7 @@ export abstract class BaseComponent implements Renderable {
         constructor() {
           super();
 
+          // ToDo:
           const template = document.createElement("template");
 
           const style = document.createElement("style");

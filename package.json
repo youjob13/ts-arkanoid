@@ -19,5 +19,9 @@
     "sass-embedded": "^1.85.1",
     "typescript": "^5.8.2",
     "vite": "^6.2.0"
+  },
+  "dependencies": {
+    "reflect-metadata": "^0.2.2",
+    "tsyringe": "^4.8.0"
   }
 }
