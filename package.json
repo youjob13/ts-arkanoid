@@ -1,27 +1,31 @@
 {
-  "name": "oop-example-app",
-  "version": "1.0.0",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "compile": "tsc -b",
-    "build": "vite build",
-    "start": "vite",
-    "start:prod": "node dist/src/index.js",
-    "pretty": "prettier --write ."
-  },
-  "author": "Danil Rodionow",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "@types/node": "^22.13.9",
-    "prettier": "3.5.3",
-    "sass-embedded": "^1.85.1",
-    "typescript": "^5.8.2",
-    "vite": "^6.2.0"
-  },
-  "dependencies": {
-    "reflect-metadata": "^0.2.2",
-    "tsyringe": "^4.8.0"
-  }
+    "name": "oop-example-app",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "compile": "tsc -b",
+        "build": "vite build",
+        "start": "vite",
+        "start:prod": "node dist/src/index.js",
+        "pretty": "prettier --write .",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist"
+    },
+    "homepage": "https://youjob13.github.io/ts-arkanoid/",
+    "author": "Danil Rodionow",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "@types/node": "^22.13.9",
+        "gh-pages": "^6.3.0",
+        "prettier": "3.5.3",
+        "sass-embedded": "^1.85.1",
+        "typescript": "^5.8.2",
+        "vite": "^6.2.0"
+    },
+    "dependencies": {
+        "reflect-metadata": "^0.2.2",
+        "tsyringe": "^4.8.0"
+    }
 }
