@@ -1,5 +1,3 @@
-import { RouterUtils } from "../shared/ui/index.js";
-import type { IRouter } from "./routes/models.js";
 import { container } from "tsyringe";
 import { Router } from "./routes/router.js";
 import { ROUTES } from "./routes/routes.js";
@@ -12,15 +10,7 @@ class App {
     }
 
     start(): void {
-        const gameLink = RouterUtils.createLink("/game", "Game");
-        const homeLink = RouterUtils.createLink("/", "Home");
-
-        const header = document.createElement("header");
-        header.append(gameLink, homeLink);
-        const main = document.createElement("main");
-
-        this.entrypoint.append(header, main);
-        this.router.registerRoot(main);
+        this.router.registerRoot(this.entrypoint);
     }
 }
 

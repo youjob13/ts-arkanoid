@@ -1,3 +1,4 @@
 export interface Renderable {
-  render: () => HTMLElement;
+    render: () => HTMLElement;
+    destroy: () => void;
 }

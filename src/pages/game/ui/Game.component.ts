@@ -1,12 +1,13 @@
 import { container } from "tsyringe";
-import { Renderable } from "../../../shared/model/index.js";
 import { GameService } from "./Game.service.js";
+import "./Game.component.scss";
+import { BaseComponent } from "../../../shared/ui/index.js";
 
-export class GameComponent implements Renderable {
+export class GameComponent extends BaseComponent {
     private gameService = container.resolve(GameService);
-    private element: HTMLDivElement;
 
     constructor() {
+        super("");
         this.element = document.createElement("div");
         this.gameService.init(this.element);
     }

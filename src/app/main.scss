@@ -1,3 +1,15 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 a[routeLink] {
-  cursor: pointer;
+    cursor: pointer;
+}
+
+#app-entry {
+    margin: 0 auto;
 }

@@ -8,11 +8,11 @@ export class Paddle {
         public height: number
     ) {}
 
-    update(input: InputController) {
+    update(input: InputController, canvasWidth: number) {
         if (input.left && this.x > 0) {
             this.x -= 5;
         }
-        if (input.right && this.x + this.width < 800) {
+        if (input.right && this.x + this.width < canvasWidth) {
             this.x += 5;
         }
     }

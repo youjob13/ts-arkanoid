@@ -20,7 +20,11 @@ export class Ball {
         return this;
     }
 
-    performWallCollision(ballPosition: Ball, fieldWidth: number) {
+    performWallCollision(
+        ballPosition: Ball,
+        fieldWidth: number,
+        fieldHeight: number
+    ) {
         if (
             ballPosition.x - ballPosition.radius < 0 ||
             ballPosition.x + ballPosition.radius > fieldWidth

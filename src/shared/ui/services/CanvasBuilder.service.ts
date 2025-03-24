@@ -3,6 +3,7 @@ import { injectable } from "tsyringe";
 export interface CanvasBuilderOptions {
     width: number;
     height: number;
+    classes?: string[];
 }
 
 const DEFAULT_CANVAS_WIDTH = 800;
@@ -35,9 +36,20 @@ export class CanvasBuilderService {
         this.canvas.width = this.options.width;
         this.canvas.height = this.options.height;
 
+        if (this.options.classes) {
+            this.options.classes.forEach(className =>
+                this.canvas.classList.add(className)
+            );
+        }
+
         parent.appendChild(this.canvas);
 
         return this;
+    }
+
+    updateSize(width: number, height: number) {
+        this.canvas.width = width;
+        this.canvas.height = height;
     }
 
     render(...renderables: Renderable[]) {

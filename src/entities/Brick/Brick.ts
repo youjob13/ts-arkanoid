@@ -25,18 +25,26 @@ export class Brick {
         this._isDestroyed = true;
     }
 
-    static createBricksField(patterns: number[][][]) {
+    static createBricksField(
+        patterns: number[][][],
+        canvasWidth: number,
+        canvasHeight: number
+    ) {
         const selectedPattern = selectRandomValue(patterns);
-        const brickWidth = 75;
-        const brickHeight = 20;
-        const padding = 10;
-        const offsetTop = 50;
-        const offsetLeft = 35;
+
+        const cols = selectedPattern[0].length;
+        const rows = selectedPattern.length;
+
+        const brickWidth = canvasWidth / (cols + 2); // Ensure bricks fit within the screen
+        const brickHeight = canvasHeight / 20; // Scale bricks proportionally
+        const padding = brickWidth * 0.1; // Padding as a percentage of width
+        const offsetTop = canvasHeight * 0.1; // Top offset 10% of canvas height
+        const offsetLeft = (canvasWidth - cols * (brickWidth + padding)) / 2; // Center bricks
 
         const bricks: Brick[] = [];
 
-        for (let row = 0; row < selectedPattern.length; row++) {
-            for (let col = 0; col < selectedPattern[row].length; col++) {
+        for (let row = 0; row < rows; row++) {
+            for (let col = 0; col < cols; col++) {
                 if (selectedPattern[row][col] === 1) {
                     bricks.push(
                         new Brick(
