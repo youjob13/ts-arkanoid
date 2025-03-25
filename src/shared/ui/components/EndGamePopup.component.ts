@@ -20,6 +20,7 @@ export class EndGamePopupComponent extends PopupComponent {
         super({
             selector: "end-game-popup",
             children: [span, btnContainer],
+            classes: ["end-game-popup-wrapper"],
         });
 
         newGameBtn.addEventListener("click", this.destroy.bind(this));

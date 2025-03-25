@@ -10,7 +10,7 @@ export class InputController {
         this.isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
         if (this.isMobile) {
-            this.setupTouchControls();
+            this.createMobileControls();
         } else {
             this.setupKeyboardControls();
         }
@@ -28,29 +28,55 @@ export class InputController {
         });
     }
 
-    private setupTouchControls() {
-        let touchStartX: number | null = null;
+    private createMobileControls() {
+        const leftButton = this.createButton(
+            "←",
+            "left",
+            () => (this.left = true),
+            () => (this.left = false)
+        );
+        const rightButton = this.createButton(
+            "→",
+            "right",
+            () => (this.right = true),
+            () => (this.right = false)
+        );
 
-        window.addEventListener("touchstart", event => {
-            if (event.touches.length > 0) {
-                touchStartX = event.touches[0].clientX;
-            }
+        document.body.appendChild(leftButton);
+        document.body.appendChild(rightButton);
+    }
+
+    private createButton(
+        label: string,
+        position: "left" | "right",
+        onPress: () => void,
+        onRelease: () => void
+    ): HTMLButtonElement {
+        const button = document.createElement("button");
+        button.textContent = label;
+        button.style.position = "fixed";
+        button.style.bottom = "20px";
+        button.style[position] = "20px"; // Position either left or right
+        button.style.width = "80px";
+        button.style.height = "80px";
+        button.style.fontSize = "30px";
+        button.style.borderRadius = "50%";
+        button.style.border = "none";
+        button.style.background = "rgba(0, 0, 0, 0.5)"; // Transparent dark background
+        button.style.color = "#fff";
+        button.style.boxShadow = "0 4px 8px rgba(0,0,0,0.3)";
+        button.style.cursor = "pointer";
+        button.style.touchAction = "none"; // Prevents double tap zoom on mobile
+
+        button.addEventListener("touchstart", e => {
+            e.preventDefault();
+            onPress();
+        });
+        button.addEventListener("touchend", e => {
+            e.preventDefault();
+            onRelease();
         });
 
-        window.addEventListener("touchmove", event => {
-            if (event.touches.length > 0 && touchStartX !== null) {
-                const touchX = event.touches[0].clientX;
-                const deltaX = touchX - touchStartX;
-
-                this.left = deltaX < -10;
-                this.right = deltaX > 10;
-            }
-        });
-
-        window.addEventListener("touchend", () => {
-            this.left = false;
-            this.right = false;
-            touchStartX = null;
-        });
+        return button;
     }
 }
