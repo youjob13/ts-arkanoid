@@ -1,0 +1,1 @@
+import{B as r,c as e,C as a}from"./Popup.service-DJxh0kwT.js";import"./index-CGfBrfuT.js";class p extends r{constructor(){super("home-page"+Math.random())}render(){const n=e("/game","Start Game"),o=e("/","Home");return new a("game-menu",{children:[n,o],classes:["menu-wrapper"]}).render()}}export{p as HomeComponent};
